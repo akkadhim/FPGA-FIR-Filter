@@ -1,0 +1,103 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity firfilter is 
+
+generic
+		(
+			num_left_bits : natural := 16
+		);
+		
+port(					
+--	Core Side - two parallel interfaces for input and output
+	ADCDAT:		out 	std_logic_vector(num_left_bits-1 downto 0);
+	DACDAT:		in		std_logic_vector(num_left_bits-1 downto 0);	
+	
+	DACrdy: 		out	std_logic;
+	ADCrdy: 		in 	std_logic;
+	
+	DACstb: 		in		std_logic;
+	ADCstb: 		out 	std_logic;
+		
+--	Control Signals
+	CLOCK_50:	in	std_logic;
+	RST_N:		in	std_logic
+);
+end entity;
+
+architecture rtl of firfilter is
+
+		--	Internal Signals
+		signal adc_reg	: std_logic_vector (num_left_bits-1 downto 0);		-- register to store the ADC i/p data from the codec				
+		signal dac_reg : std_logic_vector (num_left_bits-1 downto 0);		-- register to send the DAC o/p data to the codec	
+		signal p2s_counter : integer;									-- parallel counter for o/p from codec
+		signal s2p_counter : integer;									-- serial counter for i/p from codec
+		signal old_BCLK:std_logic;										-- to check the rising eadge of BCLK
+
+
+		begin
+
+			process (CLOCK_50)
+			begin
+				if (rising_edge(CLOCK_50)) then
+				-------------begin sync design----------------
+				
+				-- reset actions (synchronous)
+					if (RST_N = '0') then
+						s2p_counter <= 0;
+						p2s_counter <= 0;
+						DACrdy <= '1';
+						
+						
+					else
+						   old_BCLK <= AUD_BCLK;                     			   	-- needed for change detection on BCLK input
+							----------------------------------------------------------- input channel
+							if (old_BCLK='0' and AUD_BCLK='1') then   				   --rising edge of AUD_BCLK
+										if (AUD_ADCLRCK = '1') then 							-- condition for the start of the protocol
+												s2p_counter <= 1; 								   -- load the bit counter
+												adc_reg(0)<= AUD_ADCDAT; 					      -- read the first bit of the packet
+										elsif (s2p_counter < 16) then 						-- condition for the data bits of the left channel
+												adc_reg(s2p_counter) <= AUD_ADCDAT; 		   -- input one bit
+												s2p_counter <= s2p_counter+1;				      -- advance the bit counter
+												if (s2p_counter = 15) then				    	   -- condition for the strobe of ADC parallel interface
+													 ADCstb <= '1'; 
+												end if;
+										end if;
+										
+									   -------------------------------------------------- condition to drop the ADC strob
+										if (ADCrdy = '1') then	
+												ADCDAT <= adc_reg;
+												ADCstb <= '0';
+										end if;
+										
+										
+							-------------------------------------------------------------- output channel			
+							elsif (old_BCLK='1' and AUD_BCLK='0') then 
+										if (AUD_DACLRCK = '1') then 							-- start condition
+												 p2s_counter <= 1;
+												 AUD_DACDAT  <= dac_reg(0);
+										elsif (p2s_counter < 16) then 						-- each following falling edge
+												AUD_DACDAT   <= dac_reg(p2s_counter);			-- produce DAC serial data bit
+												p2s_counter  <= p2s_counter+1;
+										end if;
+										
+										--------------------------------------------------- condition for loading DAC parallel register
+										if (p2s_counter=16) then 
+											DACrdy <= '1';
+											if(DACstb = '1') then
+												dac_reg <= DACDAT;
+												DACrdy <= '0';
+											end if;
+										end if;
+							end if;
+				
+					end if;
+				-------------end sync design----------------
+				end if;
+			end process;	
+end rtl;
+
+
+		
+

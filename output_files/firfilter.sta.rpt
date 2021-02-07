@@ -1,0 +1,961 @@
+TimeQuest Timing Analyzer report for firfilter
+Sun Apr 08 11:09:27 2018
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'CLOCK_50'
+ 12. Slow Model Hold: 'CLOCK_50'
+ 13. Slow Model Minimum Pulse Width: 'CLOCK_50'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Fast Model Setup Summary
+ 19. Fast Model Hold Summary
+ 20. Fast Model Recovery Summary
+ 21. Fast Model Removal Summary
+ 22. Fast Model Minimum Pulse Width Summary
+ 23. Fast Model Setup: 'CLOCK_50'
+ 24. Fast Model Hold: 'CLOCK_50'
+ 25. Fast Model Minimum Pulse Width: 'CLOCK_50'
+ 26. Setup Times
+ 27. Hold Times
+ 28. Clock to Output Times
+ 29. Minimum Clock to Output Times
+ 30. Multicorner Timing Analysis Summary
+ 31. Setup Times
+ 32. Hold Times
+ 33. Clock to Output Times
+ 34. Minimum Clock to Output Times
+ 35. Setup Transfers
+ 36. Hold Transfers
+ 37. Report TCCS
+ 38. Report RSKM
+ 39. Unconstrained Paths
+ 40. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; firfilter                                                         ;
+; Device Family      ; Cyclone II                                                        ;
+; Device Name        ; EP2C20F484C7                                                      ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Combined                                                          ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                               ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets      ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; CLOCK_50   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Slow Model Fmax Summary                                                                                  ;
++-----------+-----------------+------------+---------------------------------------------------------------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note                                                          ;
++-----------+-----------------+------------+---------------------------------------------------------------+
+; 990.1 MHz ; 380.08 MHz      ; CLOCK_50   ; limit due to minimum period restriction (max I/O toggle rate) ;
++-----------+-----------------+------------+---------------------------------------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------+
+; Slow Model Setup Summary          ;
++----------+--------+---------------+
+; Clock    ; Slack  ; End Point TNS ;
++----------+--------+---------------+
+; CLOCK_50 ; -0.010 ; -0.017        ;
++----------+--------+---------------+
+
+
++----------------------------------+
+; Slow Model Hold Summary          ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.445 ; 0.000         ;
++----------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++----------+--------+--------------------+
+; Clock    ; Slack  ; End Point TNS      ;
++----------+--------+--------------------+
+; CLOCK_50 ; -1.631 ; -43.179            ;
++----------+--------+--------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'CLOCK_50'                                                                                 ;
++--------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node   ; To Node         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; -0.010 ; adc_reg[0]  ; DACDAT[0]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.048      ;
+; -0.007 ; adc_reg[12] ; DACDAT[12]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.045      ;
+; 0.127  ; adc_reg[4]  ; DACDAT[4]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.911      ;
+; 0.129  ; adc_reg[1]  ; DACDAT[1]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.909      ;
+; 0.129  ; adc_reg[10] ; DACDAT[10]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.909      ;
+; 0.130  ; adc_reg[7]  ; DACDAT[7]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.908      ;
+; 0.130  ; adc_reg[9]  ; DACDAT[9]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.908      ;
+; 0.130  ; adc_reg[11] ; DACDAT[11]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.908      ;
+; 0.131  ; adc_reg[3]  ; DACDAT[3]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.907      ;
+; 0.132  ; adc_reg[13] ; DACDAT[13]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.906      ;
+; 0.133  ; adc_reg[2]  ; DACDAT[2]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.905      ;
+; 0.133  ; adc_reg[8]  ; DACDAT[8]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.905      ;
+; 0.134  ; adc_reg[5]  ; DACDAT[5]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.904      ;
+; 0.135  ; adc_reg[14] ; DACDAT[14]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.903      ;
+; 0.138  ; adc_reg[6]  ; DACDAT[6]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.900      ;
+; 0.140  ; adc_reg[15] ; DACDAT[15]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.898      ;
+; 0.307  ; ADCrdy~reg0 ; ADCrdy~reg0     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.731      ;
+; 0.307  ; DACstb~reg0 ; DACstb~reg0     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.731      ;
++--------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'CLOCK_50'                                                                                 ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node   ; To Node         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; 0.445 ; ADCrdy~reg0 ; ADCrdy~reg0     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445 ; DACstb~reg0 ; DACstb~reg0     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.612 ; adc_reg[15] ; DACDAT[15]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.898      ;
+; 0.614 ; adc_reg[6]  ; DACDAT[6]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.900      ;
+; 0.617 ; adc_reg[14] ; DACDAT[14]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.903      ;
+; 0.618 ; adc_reg[5]  ; DACDAT[5]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.904      ;
+; 0.619 ; adc_reg[2]  ; DACDAT[2]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.905      ;
+; 0.619 ; adc_reg[8]  ; DACDAT[8]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.905      ;
+; 0.620 ; adc_reg[13] ; DACDAT[13]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.906      ;
+; 0.621 ; adc_reg[3]  ; DACDAT[3]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.907      ;
+; 0.622 ; adc_reg[7]  ; DACDAT[7]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.908      ;
+; 0.622 ; adc_reg[9]  ; DACDAT[9]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.908      ;
+; 0.622 ; adc_reg[11] ; DACDAT[11]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.908      ;
+; 0.623 ; adc_reg[1]  ; DACDAT[1]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.909      ;
+; 0.623 ; adc_reg[10] ; DACDAT[10]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.909      ;
+; 0.625 ; adc_reg[4]  ; DACDAT[4]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.911      ;
+; 0.759 ; adc_reg[12] ; DACDAT[12]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.045      ;
+; 0.762 ; adc_reg[0]  ; DACDAT[0]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.048      ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'CLOCK_50'                                                                    ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                    ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------+
+; -1.631 ; 1.000        ; 2.631          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; ADCrdy~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ADCrdy~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0           ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[5]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[5]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[6]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[6]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[7]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[7]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[8]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[8]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[9]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[9]~reg0            ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACstb~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACstb~reg0               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[0]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[0]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[10]               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[10]               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[11]               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[11]               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[12]               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[12]               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[13]               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[13]               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[14]               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[14]               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[15]               ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[15]               ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[1]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[1]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[2]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[2]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[3]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[3]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[4]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[4]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[5]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[5]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[6]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[6]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[7]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[7]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[8]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[8]                ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[9]                ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[9]                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ADCrdy~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ADCrdy~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50|combout          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50|combout          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0] ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[5]~reg0|clk        ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCDAT[*]   ; CLOCK_50   ; 4.309 ; 4.309 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[0]  ; CLOCK_50   ; 3.410 ; 3.410 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[1]  ; CLOCK_50   ; 3.437 ; 3.437 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[2]  ; CLOCK_50   ; 2.990 ; 2.990 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[3]  ; CLOCK_50   ; 3.576 ; 3.576 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[4]  ; CLOCK_50   ; 3.413 ; 3.413 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[5]  ; CLOCK_50   ; 3.431 ; 3.431 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[6]  ; CLOCK_50   ; 3.561 ; 3.561 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[7]  ; CLOCK_50   ; 3.086 ; 3.086 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[8]  ; CLOCK_50   ; 3.695 ; 3.695 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[9]  ; CLOCK_50   ; 3.708 ; 3.708 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[10] ; CLOCK_50   ; 3.438 ; 3.438 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[11] ; CLOCK_50   ; 3.444 ; 3.444 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[12] ; CLOCK_50   ; 3.760 ; 3.760 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[13] ; CLOCK_50   ; 3.711 ; 3.711 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[14] ; CLOCK_50   ; 4.309 ; 4.309 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[15] ; CLOCK_50   ; 0.565 ; 0.565 ; Rise       ; CLOCK_50        ;
+; ADCstb      ; CLOCK_50   ; 8.860 ; 8.860 ; Rise       ; CLOCK_50        ;
+; DACrdy      ; CLOCK_50   ; 7.810 ; 7.810 ; Rise       ; CLOCK_50        ;
+; RST_N       ; CLOCK_50   ; 9.235 ; 9.235 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Hold Times                                                                ;
++-------------+------------+--------+--------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------+------------+--------+--------+------------+-----------------+
+; ADCDAT[*]   ; CLOCK_50   ; -0.317 ; -0.317 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[0]  ; CLOCK_50   ; -3.162 ; -3.162 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[1]  ; CLOCK_50   ; -3.189 ; -3.189 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[2]  ; CLOCK_50   ; -2.742 ; -2.742 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[3]  ; CLOCK_50   ; -3.328 ; -3.328 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[4]  ; CLOCK_50   ; -3.165 ; -3.165 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[5]  ; CLOCK_50   ; -3.183 ; -3.183 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[6]  ; CLOCK_50   ; -3.313 ; -3.313 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[7]  ; CLOCK_50   ; -2.838 ; -2.838 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[8]  ; CLOCK_50   ; -3.447 ; -3.447 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[9]  ; CLOCK_50   ; -3.460 ; -3.460 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[10] ; CLOCK_50   ; -3.190 ; -3.190 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[11] ; CLOCK_50   ; -3.196 ; -3.196 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[12] ; CLOCK_50   ; -3.512 ; -3.512 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[13] ; CLOCK_50   ; -3.463 ; -3.463 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[14] ; CLOCK_50   ; -4.061 ; -4.061 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[15] ; CLOCK_50   ; -0.317 ; -0.317 ; Rise       ; CLOCK_50        ;
+; ADCstb      ; CLOCK_50   ; -2.850 ; -2.850 ; Rise       ; CLOCK_50        ;
+; DACrdy      ; CLOCK_50   ; -3.489 ; -3.489 ; Rise       ; CLOCK_50        ;
+; RST_N       ; CLOCK_50   ; -2.859 ; -2.859 ; Rise       ; CLOCK_50        ;
++-------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCrdy      ; CLOCK_50   ; 6.726 ; 6.726 ; Rise       ; CLOCK_50        ;
+; DACDAT[*]   ; CLOCK_50   ; 7.175 ; 7.175 ; Rise       ; CLOCK_50        ;
+;  DACDAT[0]  ; CLOCK_50   ; 6.529 ; 6.529 ; Rise       ; CLOCK_50        ;
+;  DACDAT[1]  ; CLOCK_50   ; 6.914 ; 6.914 ; Rise       ; CLOCK_50        ;
+;  DACDAT[2]  ; CLOCK_50   ; 6.563 ; 6.563 ; Rise       ; CLOCK_50        ;
+;  DACDAT[3]  ; CLOCK_50   ; 7.116 ; 7.116 ; Rise       ; CLOCK_50        ;
+;  DACDAT[4]  ; CLOCK_50   ; 6.903 ; 6.903 ; Rise       ; CLOCK_50        ;
+;  DACDAT[5]  ; CLOCK_50   ; 6.933 ; 6.933 ; Rise       ; CLOCK_50        ;
+;  DACDAT[6]  ; CLOCK_50   ; 6.782 ; 6.782 ; Rise       ; CLOCK_50        ;
+;  DACDAT[7]  ; CLOCK_50   ; 6.866 ; 6.866 ; Rise       ; CLOCK_50        ;
+;  DACDAT[8]  ; CLOCK_50   ; 6.887 ; 6.887 ; Rise       ; CLOCK_50        ;
+;  DACDAT[9]  ; CLOCK_50   ; 6.857 ; 6.857 ; Rise       ; CLOCK_50        ;
+;  DACDAT[10] ; CLOCK_50   ; 6.867 ; 6.867 ; Rise       ; CLOCK_50        ;
+;  DACDAT[11] ; CLOCK_50   ; 7.175 ; 7.175 ; Rise       ; CLOCK_50        ;
+;  DACDAT[12] ; CLOCK_50   ; 7.160 ; 7.160 ; Rise       ; CLOCK_50        ;
+;  DACDAT[13] ; CLOCK_50   ; 6.858 ; 6.858 ; Rise       ; CLOCK_50        ;
+;  DACDAT[14] ; CLOCK_50   ; 7.161 ; 7.161 ; Rise       ; CLOCK_50        ;
+;  DACDAT[15] ; CLOCK_50   ; 7.133 ; 7.133 ; Rise       ; CLOCK_50        ;
+; DACstb      ; CLOCK_50   ; 6.547 ; 6.547 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCrdy      ; CLOCK_50   ; 6.726 ; 6.726 ; Rise       ; CLOCK_50        ;
+; DACDAT[*]   ; CLOCK_50   ; 6.529 ; 6.529 ; Rise       ; CLOCK_50        ;
+;  DACDAT[0]  ; CLOCK_50   ; 6.529 ; 6.529 ; Rise       ; CLOCK_50        ;
+;  DACDAT[1]  ; CLOCK_50   ; 6.914 ; 6.914 ; Rise       ; CLOCK_50        ;
+;  DACDAT[2]  ; CLOCK_50   ; 6.563 ; 6.563 ; Rise       ; CLOCK_50        ;
+;  DACDAT[3]  ; CLOCK_50   ; 7.116 ; 7.116 ; Rise       ; CLOCK_50        ;
+;  DACDAT[4]  ; CLOCK_50   ; 6.903 ; 6.903 ; Rise       ; CLOCK_50        ;
+;  DACDAT[5]  ; CLOCK_50   ; 6.933 ; 6.933 ; Rise       ; CLOCK_50        ;
+;  DACDAT[6]  ; CLOCK_50   ; 6.782 ; 6.782 ; Rise       ; CLOCK_50        ;
+;  DACDAT[7]  ; CLOCK_50   ; 6.866 ; 6.866 ; Rise       ; CLOCK_50        ;
+;  DACDAT[8]  ; CLOCK_50   ; 6.887 ; 6.887 ; Rise       ; CLOCK_50        ;
+;  DACDAT[9]  ; CLOCK_50   ; 6.857 ; 6.857 ; Rise       ; CLOCK_50        ;
+;  DACDAT[10] ; CLOCK_50   ; 6.867 ; 6.867 ; Rise       ; CLOCK_50        ;
+;  DACDAT[11] ; CLOCK_50   ; 7.175 ; 7.175 ; Rise       ; CLOCK_50        ;
+;  DACDAT[12] ; CLOCK_50   ; 7.160 ; 7.160 ; Rise       ; CLOCK_50        ;
+;  DACDAT[13] ; CLOCK_50   ; 6.858 ; 6.858 ; Rise       ; CLOCK_50        ;
+;  DACDAT[14] ; CLOCK_50   ; 7.161 ; 7.161 ; Rise       ; CLOCK_50        ;
+;  DACDAT[15] ; CLOCK_50   ; 7.133 ; 7.133 ; Rise       ; CLOCK_50        ;
+; DACstb      ; CLOCK_50   ; 6.547 ; 6.547 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------+
+; Fast Model Setup Summary         ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.555 ; 0.000         ;
++----------+-------+---------------+
+
+
++----------------------------------+
+; Fast Model Hold Summary          ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.215 ; 0.000         ;
++----------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++----------+--------+--------------------+
+; Clock    ; Slack  ; End Point TNS      ;
++----------+--------+--------------------+
+; CLOCK_50 ; -1.380 ; -35.380            ;
++----------+--------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'CLOCK_50'                                                                                ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node   ; To Node         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; 0.555 ; adc_reg[0]  ; DACDAT[0]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.477      ;
+; 0.557 ; adc_reg[12] ; DACDAT[12]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.475      ;
+; 0.635 ; adc_reg[4]  ; DACDAT[4]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.397      ;
+; 0.637 ; adc_reg[1]  ; DACDAT[1]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.395      ;
+; 0.637 ; adc_reg[10] ; DACDAT[10]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.395      ;
+; 0.638 ; adc_reg[9]  ; DACDAT[9]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.394      ;
+; 0.638 ; adc_reg[11] ; DACDAT[11]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.394      ;
+; 0.639 ; adc_reg[3]  ; DACDAT[3]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.393      ;
+; 0.639 ; adc_reg[7]  ; DACDAT[7]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.393      ;
+; 0.639 ; adc_reg[13] ; DACDAT[13]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.393      ;
+; 0.640 ; adc_reg[2]  ; DACDAT[2]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.392      ;
+; 0.640 ; adc_reg[5]  ; DACDAT[5]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.392      ;
+; 0.640 ; adc_reg[8]  ; DACDAT[8]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.392      ;
+; 0.641 ; adc_reg[14] ; DACDAT[14]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.391      ;
+; 0.642 ; adc_reg[6]  ; DACDAT[6]~reg0  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.390      ;
+; 0.644 ; adc_reg[15] ; DACDAT[15]~reg0 ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.388      ;
+; 0.665 ; ADCrdy~reg0 ; ADCrdy~reg0     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.367      ;
+; 0.665 ; DACstb~reg0 ; DACstb~reg0     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 0.367      ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'CLOCK_50'                                                                                 ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node   ; To Node         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; ADCrdy~reg0 ; ADCrdy~reg0     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; DACstb~reg0 ; DACstb~reg0     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.236 ; adc_reg[15] ; DACDAT[15]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.388      ;
+; 0.238 ; adc_reg[6]  ; DACDAT[6]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.390      ;
+; 0.239 ; adc_reg[14] ; DACDAT[14]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.391      ;
+; 0.240 ; adc_reg[2]  ; DACDAT[2]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.392      ;
+; 0.240 ; adc_reg[5]  ; DACDAT[5]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.392      ;
+; 0.240 ; adc_reg[8]  ; DACDAT[8]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.392      ;
+; 0.241 ; adc_reg[3]  ; DACDAT[3]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.393      ;
+; 0.241 ; adc_reg[7]  ; DACDAT[7]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.393      ;
+; 0.241 ; adc_reg[13] ; DACDAT[13]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.393      ;
+; 0.242 ; adc_reg[9]  ; DACDAT[9]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.394      ;
+; 0.242 ; adc_reg[11] ; DACDAT[11]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.394      ;
+; 0.243 ; adc_reg[1]  ; DACDAT[1]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.395      ;
+; 0.243 ; adc_reg[10] ; DACDAT[10]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.395      ;
+; 0.245 ; adc_reg[4]  ; DACDAT[4]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.397      ;
+; 0.323 ; adc_reg[12] ; DACDAT[12]~reg0 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.475      ;
+; 0.325 ; adc_reg[0]  ; DACDAT[0]~reg0  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.477      ;
++-------+-------------+-----------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'CLOCK_50'                                                                    ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                    ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ADCrdy~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ADCrdy~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0           ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[5]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[5]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[6]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[6]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[7]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[7]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[8]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[8]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[9]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[9]~reg0            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACstb~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACstb~reg0               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[0]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[0]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[10]               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[10]               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[11]               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[11]               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[12]               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[12]               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[13]               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[13]               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[14]               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[14]               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[15]               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[15]               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[1]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[1]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[2]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[2]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[3]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[3]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[4]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[4]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[5]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[5]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[6]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[6]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[7]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[7]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[8]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[8]                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; adc_reg[9]                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; adc_reg[9]                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; ADCrdy~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; ADCrdy~reg0|clk           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50|combout          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50|combout          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0] ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[0]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[10]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[11]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[12]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[13]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[14]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[15]~reg0|clk       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[1]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[2]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[3]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; DACDAT[4]~reg0|clk        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; DACDAT[5]~reg0|clk        ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------+
+
+
++---------------------------------------------------------------------------+
+; Setup Times                                                               ;
++-------------+------------+--------+--------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------+------------+--------+--------+------------+-----------------+
+; ADCDAT[*]   ; CLOCK_50   ; 1.969  ; 1.969  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[0]  ; CLOCK_50   ; 1.567  ; 1.567  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[1]  ; CLOCK_50   ; 1.592  ; 1.592  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[2]  ; CLOCK_50   ; 1.404  ; 1.404  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[3]  ; CLOCK_50   ; 1.675  ; 1.675  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[4]  ; CLOCK_50   ; 1.567  ; 1.567  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[5]  ; CLOCK_50   ; 1.574  ; 1.574  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[6]  ; CLOCK_50   ; 1.660  ; 1.660  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[7]  ; CLOCK_50   ; 1.448  ; 1.448  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[8]  ; CLOCK_50   ; 1.628  ; 1.628  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[9]  ; CLOCK_50   ; 1.641  ; 1.641  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[10] ; CLOCK_50   ; 1.547  ; 1.547  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[11] ; CLOCK_50   ; 1.545  ; 1.545  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[12] ; CLOCK_50   ; 1.683  ; 1.683  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[13] ; CLOCK_50   ; 1.638  ; 1.638  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[14] ; CLOCK_50   ; 1.969  ; 1.969  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[15] ; CLOCK_50   ; -0.241 ; -0.241 ; Rise       ; CLOCK_50        ;
+; ADCstb      ; CLOCK_50   ; 3.829  ; 3.829  ; Rise       ; CLOCK_50        ;
+; DACrdy      ; CLOCK_50   ; 3.472  ; 3.472  ; Rise       ; CLOCK_50        ;
+; RST_N       ; CLOCK_50   ; 3.976  ; 3.976  ; Rise       ; CLOCK_50        ;
++-------------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Hold Times                                                                ;
++-------------+------------+--------+--------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------+------------+--------+--------+------------+-----------------+
+; ADCDAT[*]   ; CLOCK_50   ; 0.361  ; 0.361  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[0]  ; CLOCK_50   ; -1.447 ; -1.447 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[1]  ; CLOCK_50   ; -1.472 ; -1.472 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[2]  ; CLOCK_50   ; -1.284 ; -1.284 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[3]  ; CLOCK_50   ; -1.555 ; -1.555 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[4]  ; CLOCK_50   ; -1.447 ; -1.447 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[5]  ; CLOCK_50   ; -1.454 ; -1.454 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[6]  ; CLOCK_50   ; -1.540 ; -1.540 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[7]  ; CLOCK_50   ; -1.328 ; -1.328 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[8]  ; CLOCK_50   ; -1.508 ; -1.508 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[9]  ; CLOCK_50   ; -1.521 ; -1.521 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[10] ; CLOCK_50   ; -1.427 ; -1.427 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[11] ; CLOCK_50   ; -1.425 ; -1.425 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[12] ; CLOCK_50   ; -1.563 ; -1.563 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[13] ; CLOCK_50   ; -1.518 ; -1.518 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[14] ; CLOCK_50   ; -1.849 ; -1.849 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[15] ; CLOCK_50   ; 0.361  ; 0.361  ; Rise       ; CLOCK_50        ;
+; ADCstb      ; CLOCK_50   ; -1.335 ; -1.335 ; Rise       ; CLOCK_50        ;
+; DACrdy      ; CLOCK_50   ; -1.566 ; -1.566 ; Rise       ; CLOCK_50        ;
+; RST_N       ; CLOCK_50   ; -1.340 ; -1.340 ; Rise       ; CLOCK_50        ;
++-------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCrdy      ; CLOCK_50   ; 3.641 ; 3.641 ; Rise       ; CLOCK_50        ;
+; DACDAT[*]   ; CLOCK_50   ; 3.881 ; 3.881 ; Rise       ; CLOCK_50        ;
+;  DACDAT[0]  ; CLOCK_50   ; 3.573 ; 3.573 ; Rise       ; CLOCK_50        ;
+;  DACDAT[1]  ; CLOCK_50   ; 3.738 ; 3.738 ; Rise       ; CLOCK_50        ;
+;  DACDAT[2]  ; CLOCK_50   ; 3.605 ; 3.605 ; Rise       ; CLOCK_50        ;
+;  DACDAT[3]  ; CLOCK_50   ; 3.850 ; 3.850 ; Rise       ; CLOCK_50        ;
+;  DACDAT[4]  ; CLOCK_50   ; 3.732 ; 3.732 ; Rise       ; CLOCK_50        ;
+;  DACDAT[5]  ; CLOCK_50   ; 3.758 ; 3.758 ; Rise       ; CLOCK_50        ;
+;  DACDAT[6]  ; CLOCK_50   ; 3.678 ; 3.678 ; Rise       ; CLOCK_50        ;
+;  DACDAT[7]  ; CLOCK_50   ; 3.697 ; 3.697 ; Rise       ; CLOCK_50        ;
+;  DACDAT[8]  ; CLOCK_50   ; 3.775 ; 3.775 ; Rise       ; CLOCK_50        ;
+;  DACDAT[9]  ; CLOCK_50   ; 3.745 ; 3.745 ; Rise       ; CLOCK_50        ;
+;  DACDAT[10] ; CLOCK_50   ; 3.755 ; 3.755 ; Rise       ; CLOCK_50        ;
+;  DACDAT[11] ; CLOCK_50   ; 3.881 ; 3.881 ; Rise       ; CLOCK_50        ;
+;  DACDAT[12] ; CLOCK_50   ; 3.874 ; 3.874 ; Rise       ; CLOCK_50        ;
+;  DACDAT[13] ; CLOCK_50   ; 3.744 ; 3.744 ; Rise       ; CLOCK_50        ;
+;  DACDAT[14] ; CLOCK_50   ; 3.875 ; 3.875 ; Rise       ; CLOCK_50        ;
+;  DACDAT[15] ; CLOCK_50   ; 3.851 ; 3.851 ; Rise       ; CLOCK_50        ;
+; DACstb      ; CLOCK_50   ; 3.607 ; 3.607 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCrdy      ; CLOCK_50   ; 3.641 ; 3.641 ; Rise       ; CLOCK_50        ;
+; DACDAT[*]   ; CLOCK_50   ; 3.573 ; 3.573 ; Rise       ; CLOCK_50        ;
+;  DACDAT[0]  ; CLOCK_50   ; 3.573 ; 3.573 ; Rise       ; CLOCK_50        ;
+;  DACDAT[1]  ; CLOCK_50   ; 3.738 ; 3.738 ; Rise       ; CLOCK_50        ;
+;  DACDAT[2]  ; CLOCK_50   ; 3.605 ; 3.605 ; Rise       ; CLOCK_50        ;
+;  DACDAT[3]  ; CLOCK_50   ; 3.850 ; 3.850 ; Rise       ; CLOCK_50        ;
+;  DACDAT[4]  ; CLOCK_50   ; 3.732 ; 3.732 ; Rise       ; CLOCK_50        ;
+;  DACDAT[5]  ; CLOCK_50   ; 3.758 ; 3.758 ; Rise       ; CLOCK_50        ;
+;  DACDAT[6]  ; CLOCK_50   ; 3.678 ; 3.678 ; Rise       ; CLOCK_50        ;
+;  DACDAT[7]  ; CLOCK_50   ; 3.697 ; 3.697 ; Rise       ; CLOCK_50        ;
+;  DACDAT[8]  ; CLOCK_50   ; 3.775 ; 3.775 ; Rise       ; CLOCK_50        ;
+;  DACDAT[9]  ; CLOCK_50   ; 3.745 ; 3.745 ; Rise       ; CLOCK_50        ;
+;  DACDAT[10] ; CLOCK_50   ; 3.755 ; 3.755 ; Rise       ; CLOCK_50        ;
+;  DACDAT[11] ; CLOCK_50   ; 3.881 ; 3.881 ; Rise       ; CLOCK_50        ;
+;  DACDAT[12] ; CLOCK_50   ; 3.874 ; 3.874 ; Rise       ; CLOCK_50        ;
+;  DACDAT[13] ; CLOCK_50   ; 3.744 ; 3.744 ; Rise       ; CLOCK_50        ;
+;  DACDAT[14] ; CLOCK_50   ; 3.875 ; 3.875 ; Rise       ; CLOCK_50        ;
+;  DACDAT[15] ; CLOCK_50   ; 3.851 ; 3.851 ; Rise       ; CLOCK_50        ;
+; DACstb      ; CLOCK_50   ; 3.607 ; 3.607 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                          ;
++------------------+--------+-------+----------+---------+---------------------+
+; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+--------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -0.010 ; 0.215 ; N/A      ; N/A     ; -1.631              ;
+;  CLOCK_50        ; -0.010 ; 0.215 ; N/A      ; N/A     ; -1.631              ;
+; Design-wide TNS  ; -0.017 ; 0.0   ; 0.0      ; 0.0     ; -43.179             ;
+;  CLOCK_50        ; -0.017 ; 0.000 ; N/A      ; N/A     ; -43.179             ;
++------------------+--------+-------+----------+---------+---------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCDAT[*]   ; CLOCK_50   ; 4.309 ; 4.309 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[0]  ; CLOCK_50   ; 3.410 ; 3.410 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[1]  ; CLOCK_50   ; 3.437 ; 3.437 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[2]  ; CLOCK_50   ; 2.990 ; 2.990 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[3]  ; CLOCK_50   ; 3.576 ; 3.576 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[4]  ; CLOCK_50   ; 3.413 ; 3.413 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[5]  ; CLOCK_50   ; 3.431 ; 3.431 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[6]  ; CLOCK_50   ; 3.561 ; 3.561 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[7]  ; CLOCK_50   ; 3.086 ; 3.086 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[8]  ; CLOCK_50   ; 3.695 ; 3.695 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[9]  ; CLOCK_50   ; 3.708 ; 3.708 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[10] ; CLOCK_50   ; 3.438 ; 3.438 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[11] ; CLOCK_50   ; 3.444 ; 3.444 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[12] ; CLOCK_50   ; 3.760 ; 3.760 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[13] ; CLOCK_50   ; 3.711 ; 3.711 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[14] ; CLOCK_50   ; 4.309 ; 4.309 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[15] ; CLOCK_50   ; 0.565 ; 0.565 ; Rise       ; CLOCK_50        ;
+; ADCstb      ; CLOCK_50   ; 8.860 ; 8.860 ; Rise       ; CLOCK_50        ;
+; DACrdy      ; CLOCK_50   ; 7.810 ; 7.810 ; Rise       ; CLOCK_50        ;
+; RST_N       ; CLOCK_50   ; 9.235 ; 9.235 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Hold Times                                                                ;
++-------------+------------+--------+--------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-------------+------------+--------+--------+------------+-----------------+
+; ADCDAT[*]   ; CLOCK_50   ; 0.361  ; 0.361  ; Rise       ; CLOCK_50        ;
+;  ADCDAT[0]  ; CLOCK_50   ; -1.447 ; -1.447 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[1]  ; CLOCK_50   ; -1.472 ; -1.472 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[2]  ; CLOCK_50   ; -1.284 ; -1.284 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[3]  ; CLOCK_50   ; -1.555 ; -1.555 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[4]  ; CLOCK_50   ; -1.447 ; -1.447 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[5]  ; CLOCK_50   ; -1.454 ; -1.454 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[6]  ; CLOCK_50   ; -1.540 ; -1.540 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[7]  ; CLOCK_50   ; -1.328 ; -1.328 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[8]  ; CLOCK_50   ; -1.508 ; -1.508 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[9]  ; CLOCK_50   ; -1.521 ; -1.521 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[10] ; CLOCK_50   ; -1.427 ; -1.427 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[11] ; CLOCK_50   ; -1.425 ; -1.425 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[12] ; CLOCK_50   ; -1.563 ; -1.563 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[13] ; CLOCK_50   ; -1.518 ; -1.518 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[14] ; CLOCK_50   ; -1.849 ; -1.849 ; Rise       ; CLOCK_50        ;
+;  ADCDAT[15] ; CLOCK_50   ; 0.361  ; 0.361  ; Rise       ; CLOCK_50        ;
+; ADCstb      ; CLOCK_50   ; -1.335 ; -1.335 ; Rise       ; CLOCK_50        ;
+; DACrdy      ; CLOCK_50   ; -1.566 ; -1.566 ; Rise       ; CLOCK_50        ;
+; RST_N       ; CLOCK_50   ; -1.340 ; -1.340 ; Rise       ; CLOCK_50        ;
++-------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCrdy      ; CLOCK_50   ; 6.726 ; 6.726 ; Rise       ; CLOCK_50        ;
+; DACDAT[*]   ; CLOCK_50   ; 7.175 ; 7.175 ; Rise       ; CLOCK_50        ;
+;  DACDAT[0]  ; CLOCK_50   ; 6.529 ; 6.529 ; Rise       ; CLOCK_50        ;
+;  DACDAT[1]  ; CLOCK_50   ; 6.914 ; 6.914 ; Rise       ; CLOCK_50        ;
+;  DACDAT[2]  ; CLOCK_50   ; 6.563 ; 6.563 ; Rise       ; CLOCK_50        ;
+;  DACDAT[3]  ; CLOCK_50   ; 7.116 ; 7.116 ; Rise       ; CLOCK_50        ;
+;  DACDAT[4]  ; CLOCK_50   ; 6.903 ; 6.903 ; Rise       ; CLOCK_50        ;
+;  DACDAT[5]  ; CLOCK_50   ; 6.933 ; 6.933 ; Rise       ; CLOCK_50        ;
+;  DACDAT[6]  ; CLOCK_50   ; 6.782 ; 6.782 ; Rise       ; CLOCK_50        ;
+;  DACDAT[7]  ; CLOCK_50   ; 6.866 ; 6.866 ; Rise       ; CLOCK_50        ;
+;  DACDAT[8]  ; CLOCK_50   ; 6.887 ; 6.887 ; Rise       ; CLOCK_50        ;
+;  DACDAT[9]  ; CLOCK_50   ; 6.857 ; 6.857 ; Rise       ; CLOCK_50        ;
+;  DACDAT[10] ; CLOCK_50   ; 6.867 ; 6.867 ; Rise       ; CLOCK_50        ;
+;  DACDAT[11] ; CLOCK_50   ; 7.175 ; 7.175 ; Rise       ; CLOCK_50        ;
+;  DACDAT[12] ; CLOCK_50   ; 7.160 ; 7.160 ; Rise       ; CLOCK_50        ;
+;  DACDAT[13] ; CLOCK_50   ; 6.858 ; 6.858 ; Rise       ; CLOCK_50        ;
+;  DACDAT[14] ; CLOCK_50   ; 7.161 ; 7.161 ; Rise       ; CLOCK_50        ;
+;  DACDAT[15] ; CLOCK_50   ; 7.133 ; 7.133 ; Rise       ; CLOCK_50        ;
+; DACstb      ; CLOCK_50   ; 6.547 ; 6.547 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-------------+------------+-------+-------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-------------+------------+-------+-------+------------+-----------------+
+; ADCrdy      ; CLOCK_50   ; 3.641 ; 3.641 ; Rise       ; CLOCK_50        ;
+; DACDAT[*]   ; CLOCK_50   ; 3.573 ; 3.573 ; Rise       ; CLOCK_50        ;
+;  DACDAT[0]  ; CLOCK_50   ; 3.573 ; 3.573 ; Rise       ; CLOCK_50        ;
+;  DACDAT[1]  ; CLOCK_50   ; 3.738 ; 3.738 ; Rise       ; CLOCK_50        ;
+;  DACDAT[2]  ; CLOCK_50   ; 3.605 ; 3.605 ; Rise       ; CLOCK_50        ;
+;  DACDAT[3]  ; CLOCK_50   ; 3.850 ; 3.850 ; Rise       ; CLOCK_50        ;
+;  DACDAT[4]  ; CLOCK_50   ; 3.732 ; 3.732 ; Rise       ; CLOCK_50        ;
+;  DACDAT[5]  ; CLOCK_50   ; 3.758 ; 3.758 ; Rise       ; CLOCK_50        ;
+;  DACDAT[6]  ; CLOCK_50   ; 3.678 ; 3.678 ; Rise       ; CLOCK_50        ;
+;  DACDAT[7]  ; CLOCK_50   ; 3.697 ; 3.697 ; Rise       ; CLOCK_50        ;
+;  DACDAT[8]  ; CLOCK_50   ; 3.775 ; 3.775 ; Rise       ; CLOCK_50        ;
+;  DACDAT[9]  ; CLOCK_50   ; 3.745 ; 3.745 ; Rise       ; CLOCK_50        ;
+;  DACDAT[10] ; CLOCK_50   ; 3.755 ; 3.755 ; Rise       ; CLOCK_50        ;
+;  DACDAT[11] ; CLOCK_50   ; 3.881 ; 3.881 ; Rise       ; CLOCK_50        ;
+;  DACDAT[12] ; CLOCK_50   ; 3.874 ; 3.874 ; Rise       ; CLOCK_50        ;
+;  DACDAT[13] ; CLOCK_50   ; 3.744 ; 3.744 ; Rise       ; CLOCK_50        ;
+;  DACDAT[14] ; CLOCK_50   ; 3.875 ; 3.875 ; Rise       ; CLOCK_50        ;
+;  DACDAT[15] ; CLOCK_50   ; 3.851 ; 3.851 ; Rise       ; CLOCK_50        ;
+; DACstb      ; CLOCK_50   ; 3.607 ; 3.607 ; Rise       ; CLOCK_50        ;
++-------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 18       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 18       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 19    ; 19   ;
+; Unconstrained Input Port Paths  ; 85    ; 85   ;
+; Unconstrained Output Ports      ; 18    ; 18   ;
+; Unconstrained Output Port Paths ; 18    ; 18   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sun Apr 08 11:09:25 2018
+Info: Command: quartus_sta firfilter -c firfilter
+Info: qsta_default_script.tcl version: #1
+Info (293032): Detected changes in source files.
+    Info (293027): Source file: E:/MSc/Semester 1/Reconfigurable Hardware Design/FPGA Lab projects/FIR Filter/firfilter.vhd has changed.
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'firfilter.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK_50 CLOCK_50
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -0.010
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -0.010        -0.017 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.445
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.445         0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.631
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.631       -43.179 CLOCK_50 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Info (332146): Worst-case setup slack is 0.555
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.555         0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.215
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.215         0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380       -35.380 CLOCK_50 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 460 megabytes
+    Info: Processing ended: Sun Apr 08 11:09:27 2018
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+
