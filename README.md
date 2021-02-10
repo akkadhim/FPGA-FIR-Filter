@@ -1,4 +1,4 @@
-**The aim of this project is to learn how to configure a reconfigurable hardware platform and program it to do a specific job, and to do that the below tasks emerged during the design process:**
+## **The aim of this project is to learn how to configure a reconfigurable hardware platform and program it to do a specific job, and to do that the below tasks emerged during the design process:**
 
 -	Realizing the idea of implementing a FIR filter using the hardware.
 -	Configure a codec chip which is connected to the FPGA chip and initialize it in DSP mode.
